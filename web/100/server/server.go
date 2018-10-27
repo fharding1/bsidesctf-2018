@@ -63,8 +63,7 @@ func main() {
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		var session string
 
-		sessionCookie, err := r.Cookie("session")
-		if err != nil {
+		if sessionCookie, err := r.Cookie("session"); err != nil {
 			generatedSession := uuid.Must(uuid.NewV4()).String()
 			w.Header().Add("Set-Cookie", "session="+generatedSession)
 			session = generatedSession

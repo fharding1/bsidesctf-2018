@@ -53,8 +53,9 @@ func main() {
 
 		foundWords[n-1] = word
 	}
+	fmt.Println()
 
-	fmt.Println("Killing by 1000 curls")
+	fmt.Println("Killing by 1000 curls:")
 	for i, word := range foundWords {
 		fmt.Printf("\rProgress: %.2f%%", float64(i)/float64(len(foundWords))*100)
 		_, err := http.Get(url + word)

@@ -7,6 +7,7 @@ import (
 	"net/http"
 	"strconv"
 	"strings"
+	"time"
 
 	uuid "github.com/satori/go.uuid"
 )
@@ -38,6 +39,8 @@ const badBody = `<!doctype html>
 const flag = `BSidesPDX{ThIs_ChAlLeNgE_iSn'T_hArD}`
 
 func main() {
+	rand.Seed(time.Now().Unix()) // vvv secure
+
 	knocks := make(map[string]int)
 
 	dictBytes, err := ioutil.ReadFile("dict.txt")

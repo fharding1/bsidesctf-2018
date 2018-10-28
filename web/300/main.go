@@ -25,11 +25,11 @@ func getToken(url string) (string, error) {
 		return "", err
 	}
 
-	defer resp.Body.Close()
 	image, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		return "", err
 	}
+	defer resp.Body.Close()
 
 	client := gosseract.NewClient()
 	defer client.Close()
